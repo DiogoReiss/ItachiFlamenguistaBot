@@ -1,5 +1,5 @@
 const Props = {
-    "token": "NzI2MjA3MTU2NDkxMTI0NzU3.XvaFGw.XiveVySnJaJybwoEENwH9-mCHdg",
+    "token": "your token here",
     "prefix": "!"
 };
 
