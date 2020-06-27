@@ -1,0 +1,26 @@
+{
+  "name": "botdiscord",
+  "version": "1.0.0",
+  "description": "itachiFlamenguista",
+  "main": "index.js",
+  "dependencies": {
+    "@discordjs/opus": "^0.3.2",
+    "discord.js": "^12.2.0",
+    "opusscript": "0.0.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DiogoReiss/ItachiFlamenguistaBot.git"
+  },
+  "author": "Diogo Reis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DiogoReiss/ItachiFlamenguistaBot/issues"
+  },
+  "homepage": "https://github.com/DiogoReiss/ItachiFlamenguistaBot#readme"
+}
