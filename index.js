@@ -1,6 +1,6 @@
 const { Client, MessageAttachment } = require('discord.js');
 const client = new Client();
-const config = require('./data/botProps')
+const config = require('./data/configBot/botProps')
 const path = require('path');
 //const images = require('./data/littleGuysImages')
 
