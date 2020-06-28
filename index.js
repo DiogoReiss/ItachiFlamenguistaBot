@@ -1,8 +1,11 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
+
 const littleGuy = require('./src/littleGuy');
 const simpleAnswers = require('./src/simpleAnswers');
-const config = require('./data/configBot/botProps')
+const calculatePing = require('./src/calculatePing');
+const config = require('./data/configBot/botProps');
+
 client.login(config.token);
 
 
@@ -12,9 +15,9 @@ client.on('ready', () => {
     const embed = new Discord.MessageEmbed()
     .setTitle('COMEÇOU A PUTARIA ')
     .setColor(0xff0000)
-    .setImage("https://pbs.twimg.com/media/EHm2zoIXUAI0ttU.jpg")
+    .setThumbnail("https://pbs.twimg.com/media/EHm2zoIXUAI0ttU.jpg")
     .setDescription('Mangekyō Sharingan, to on nessa bagaça!');
-    //var generalChannel = client.channels.cache.get("695102883087253507").send(embed)
+    var generalChannel = client.channels.cache.get("695102883087253507").send(embed)
 });
 
 
@@ -30,10 +33,12 @@ client.on('guildMemberAdd', member => {
 })
 
 client.on('message', msg => {
-    if (msg.content.toLowerCase() === 'ping') {
-        msg.channel.send('LETYCIA OTARIA');
+    if (msg.content.toLowerCase() === `ping`) {
+        
+        return calculatePing(msg);
     }
     if (msg.content.toLowerCase() === `${config.prefix}bot`) {
+        
         return simpleAnswers(msg);
     }
     if (msg.content.toLowerCase() === `${config.prefix}anao`) {
