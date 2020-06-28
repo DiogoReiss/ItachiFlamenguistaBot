@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const { RichEmbed} = require('discord.js');
+const littleGuy = require('./src/littleGuy');
+const simpleAnswers = require('./src/simpleAnswers');
 const config = require('./data/configBot/botProps')
 client.login(config.token);
 
@@ -13,11 +14,12 @@ client.on('ready', () => {
     .setColor(0xff0000)
     .setImage("https://pbs.twimg.com/media/EHm2zoIXUAI0ttU.jpg")
     .setDescription('Mangekyō Sharingan, to on nessa bagaça!');
-    var generalChannel = client.channels.cache.get("695102883087253507").send(embed)
+    //var generalChannel = client.channels.cache.get("695102883087253507").send(embed)
 });
 
 
 client.on('guildMemberAdd', member => {
+    console.log(member)
     var newMemberAvatar = member.user.displayAvatarURL()
     const embed = new Discord.MessageEmbed()
     .setTitle(`Bem vindo! ${member}`)
@@ -32,15 +34,10 @@ client.on('message', msg => {
         msg.channel.send('LETYCIA OTARIA');
     }
     if (msg.content.toLowerCase() === `${config.prefix}bot`) {
-        msg.reply('Oi, mô')
+        return simpleAnswers(msg);
     }
     if (msg.content.toLowerCase() === `${config.prefix}anao`) {
-        var randomNumber = Math.floor((Math.random() * 10) + 1);
-        if (randomNumber < 10) {
-            randomNumber = `0${randomNumber}`
-        }
-        const image = new Discord.MessageAttachment(`./data/littleGuysImages/0${randomNumber}.jpg`)
-        msg.channel.send(`Aqui o anão porra!`, image)
-        console.log(`Aqui o anão porra!`, image)
+        
+        return littleGuy(msg);
     }
 });
