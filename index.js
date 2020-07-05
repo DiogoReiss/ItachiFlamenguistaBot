@@ -18,14 +18,16 @@ client.on('ready', () => {
     .setThumbnail("https://pbs.twimg.com/media/EHm2zoIXUAI0ttU.jpg")
     .setDescription('Mangekyō Sharingan, to on nessa bagaça!');
     var generalChannel = client.channels.cache.get("695102883087253507").send(embed)
+    var guildChannel = client.channels.cache.get("717087174796902411").send(embed)
 });
 
 
 client.on('guildMemberAdd', member => {
     console.log(member)
+    console.log(member.user.username)
     var newMemberAvatar = member.user.displayAvatarURL()
     const embed = new Discord.MessageEmbed()
-    .setTitle(`Bem vindo! ${member}`)
+    .setTitle(`Bem vindo! ${member.user.username}`)
     .setColor(0xff0000)
     .setThumbnail(`${newMemberAvatar}`)
     .setDescription('O ultimo que entrou mama o bonde');
@@ -33,6 +35,8 @@ client.on('guildMemberAdd', member => {
 })
 
 client.on('message', msg => {
+    if (msg.author.bot || !msg.content.startsWith(config.prefix)) return; 
+
     if (msg.content.toLowerCase() === `ping`) {
         
         return calculatePing(msg);
@@ -44,5 +48,11 @@ client.on('message', msg => {
     if (msg.content.toLowerCase() === `${config.prefix}anao`) {
         
         return littleGuy(msg);
+    } else {
+        const validCommand = new Discord.MessageEmbed()
+            .setTitle('Comando invalido!')
+            .setColor(0xff0000)
+            .setDescription(`Esse comando não existe seu corno!`)
+        msg.channel.send(validCommand)
     }
 });
